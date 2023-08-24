@@ -6,7 +6,7 @@
 /*   By: gykoh <gykoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:53:28 by gykoh             #+#    #+#             */
-/*   Updated: 2023/08/24 16:02:53 by gykoh            ###   ########.fr       */
+/*   Updated: 2023/08/24 17:35:25 by gykoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	ft_send_bits(int pid, char c)
 			}
 		}
 		bit++;
-		usleep(100);
+		usleep(300);
 	}
+	usleep(300);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: gykoh <gykoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:53:31 by gykoh             #+#    #+#             */
-/*   Updated: 2023/08/24 15:42:13 by gykoh            ###   ########.fr       */
+/*   Updated: 2023/08/24 17:17:44 by gykoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,17 @@ void	ft_handler(int signal)
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	int	pid;
 
 	pid = getpid();
-	(void)argv;
-	if (argc != 1)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
 	signal(SIGUSR1, ft_handler);
 	signal(SIGUSR2, ft_handler);
 	write(1, "PID: ", 5);
 	ft_putnbr_fd(pid, 1);
-	write (1, "\n", 1);
-	while (argc == 1)
+	write(1, "\n", 1);
+	while (1)
 		pause();
 	return (0);
 }
