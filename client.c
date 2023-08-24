@@ -6,7 +6,7 @@
 /*   By: gykoh <gykoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:53:28 by gykoh             #+#    #+#             */
-/*   Updated: 2023/08/22 21:36:38 by gykoh            ###   ########.fr       */
+/*   Updated: 2023/08/24 16:02:53 by gykoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,54 +37,53 @@ int	ft_atoi(const char *str)
 	return ((int)(answer * sign));
 }
 
-void    ft_send_bits(int pid, char c)
+void	ft_send_bits(int pid, char c)
 {
-    int bit;
+	int	bit;
 
-    bit = 0;
-    while (bit < 8)
-    {
-        if (c & (1 << bit))
-        {
+	bit = 0;
+	while (bit < 8)
+	{
+		if (c & (1 << bit))
+		{
 			if (kill(pid, SIGUSR1) < 0)
 			{
-				write(2, "SIGNAL ERROR\n", 14);
+				write(2, "ERROR\n", 6);
 				exit(1);
 			}
 		}
-        else
-        {
+		else
+		{
 			if (kill(pid, SIGUSR2) < 0)
 			{
-				write(2, "SIGNAL ERROR\n", 14);
+				write(2, "ERROR\n", 6);
 				exit(1);
 			}
 		}
-        bit++;
-        usleep(5000);
-    }
+		bit++;
+		usleep(100);
+	}
 }
 
-int main(int argc, char ** argv)
+int	main(int argc, char **argv)
 {
-    int pid;
-    int i;
+	int	pid;
+	int	i;
 
-    i = 0;
-    if (argc == 3)
-    {
-        pid = ft_atoi(argv[1]);
-        while (argv[2][i] != '\0')
-        {
-            ft_send_bits(pid, argv[2][i]);
-            i++;
-        }
-        // ft_send_bits(pid, '\n');
-    }
-    else
-    {
-        write (2, "ERROR\n", 6);
-        return (1);
-    }
-    return (0);
+	i = 0;
+	if (argc == 3)
+	{
+		pid = ft_atoi(argv[1]);
+		while (argv[2][i] != '\0')
+		{
+			ft_send_bits(pid, argv[2][i]);
+			i++;
+		}
+	}
+	else
+	{
+		write (2, "ERROR\n", 6);
+		return (1);
+	}
+	return (0);
 }

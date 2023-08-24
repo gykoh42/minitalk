@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gykoh <gykoh@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/24 15:41:11 by gykoh             #+#    #+#             */
+/*   Updated: 2023/08/24 15:43:13 by gykoh            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINITALK_H
 # define MINITALK_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
-# include <stdio.h>
 
-# endif
+#endif
